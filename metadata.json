@@ -1,0 +1,7 @@
+{
+  "name": "Aprova.ai - O Waze da Sua Aprovação",
+  "description": "Plataforma de correção de redações estilo ENEM com feedback granular, análise por competências e comparação de notas SiSU.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

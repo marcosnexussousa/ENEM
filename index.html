@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR" class="antialiased">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprova.ai | O Waze da sua Redação</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: 'var(--color-primary)',
+              'primary-hover': 'var(--color-primary-hover)',
+              accent: 'var(--color-accent)',
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            animation: {
+              'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'float': 'float 6s ease-in-out infinite',
+              'aurora': 'aurora 20s linear infinite',
+              'liquid-metal': 'liquid-metal 8s linear infinite',
+              'orbital-right': 'orbital-rotate 4s linear infinite',
+              'orbital-left': 'orbital-rotate 6s linear reverse infinite',
+              'laser-scan': 'laser-scan 4s cubic-bezier(0.4, 0, 0.2, 1) infinite',
+              'ancient-fade': 'ancient-glow 8s ease-in-out infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              },
+              aurora: {
+                'from': { backgroundPosition: '50% 50%, 50% 50%' },
+                'to': { backgroundPosition: '350% 50%, 50% 350%' },
+              },
+              'liquid-metal': {
+                '0%': { backgroundPosition: '0% 50%' },
+                '50%': { backgroundPosition: '100% 50%' },
+                '100%': { backgroundPosition: '0% 50%' },
+              },
+              'orbital-rotate': {
+                'from': { transform: 'rotate(0deg)' },
+                'to': { transform: 'rotate(360deg)' },
+              },
+              'laser-scan': {
+                '0%': { left: '-10%', opacity: '0' },
+                '10%': { opacity: '1' },
+                '90%': { opacity: '1' },
+                '100%': { left: '110%', opacity: '0' },
+              },
+              'ancient-glow': {
+                '0%, 100%': { boxShadow: 'inset 0 0 60px rgba(139, 92, 5, 0.05)' },
+                '50%': { boxShadow: 'inset 0 0 100px rgba(139, 92, 5, 0.15)' },
+              }
+            }
+          },
+        },
+      }
+
+      (function() {
+        const theme = localStorage.getItem('theme-profile') || 'aprova';
+        const mode = localStorage.getItem('theme-mode') || 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+        if (mode === 'dark') document.documentElement.classList.add('dark');
+      })();
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+          --color-primary: #4F46E5;
+          --color-primary-hover: #4338ca;
+          --color-accent: #818cf8;
+          --bg-main: #f8fafc;
+          --bg-surface: #ffffff;
+          --border-color: rgba(79, 70, 229, 0.1);
+        }
+
+        /* TEMA APROVA.AI DARK (INDIGO DEEP) */
+        .dark[data-theme='aprova'] {
+          --color-primary: #6366f1;
+          --color-primary-hover: #4f46e5;
+          --color-accent: #a5b4fc;
+          --bg-main: #03030b;
+          --bg-surface: #080816;
+          --border-color: rgba(99, 102, 241, 0.15);
+        }
+
+        /* TEMA MIDNIGHT (OLED BLACK) */
+        .dark[data-theme='midnight'] {
+          --color-primary: #ffffff;
+          --color-primary-hover: #e5e5e5;
+          --color-accent: #a1a1aa;
+          --bg-main: #000000;
+          --bg-surface: #0a0a0a;
+          --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* TEMA NATURE (CALM ZEN / EMERALD) */
+        .dark[data-theme='nature'] {
+          --color-primary: #10b981;
+          --color-primary-hover: #059669;
+          --color-accent: #6ee7b7;
+          --bg-main: #020604;
+          --bg-surface: #040d08;
+          --border-color: rgba(16, 185, 129, 0.15);
+        }
+
+        /* TEMA SOLAR (WARM PAPER / AMBER) */
+        .dark[data-theme='solar'] {
+          --color-primary: #f59e0b;
+          --color-primary-hover: #d97706;
+          --color-accent: #fcd34d;
+          --bg-main: #0c0701;
+          --bg-surface: #170d02;
+          --border-color: rgba(245, 158, 11, 0.15);
+        }
+
+        /* TEMA OCEAN (DEEP SEA / CYAN) */
+        .dark[data-theme='ocean'] {
+          --color-primary: #06b6d4;
+          --color-primary-hover: #0891b2;
+          --color-accent: #67e8f9;
+          --bg-main: #01060b;
+          --bg-surface: #020d17;
+          --border-color: rgba(6, 182, 212, 0.15);
+        }
+
+        /* TEMA ROSE (CREATIVE PINK) */
+        .dark[data-theme='rose'] {
+          --color-primary: #f43f5e;
+          --color-primary-hover: #e11d48;
+          --color-accent: #fda4af;
+          --bg-main: #080104;
+          --bg-surface: #14020a;
+          --border-color: rgba(244, 63, 94, 0.15);
+        }
+
+        /* TEMA LAVENDER (DREAMY / VIOLET) */
+        .dark[data-theme='lavender'] {
+          --color-primary: #8b5cf6;
+          --color-primary-hover: #7c3aed;
+          --color-accent: #c4b5fd;
+          --bg-main: #05020a;
+          --bg-surface: #0d0617;
+          --border-color: rgba(139, 92, 246, 0.15);
+        }
+
+        /* TEMA SLATE (INDUSTRIAL / STEEL) */
+        .dark[data-theme='slate'] {
+          --color-primary: #94a3b8;
+          --color-primary-hover: #64748b;
+          --color-accent: #cbd5e1;
+          --bg-main: #0f172a;
+          --bg-surface: #1e293b;
+          --border-color: rgba(148, 163, 184, 0.2);
+        }
+
+        /* EFEITO: MESH GRADIENT ANIMADO ATUALIZADO */
+        .aurora-bg {
+          background-color: var(--bg-main);
+          background-image: 
+            radial-gradient(at 0% 0%, hsla(253,16%,7%,0.05) 0, transparent 50%), 
+            radial-gradient(at 50% 0%, hsla(225,39%,30%,0.05) 0, transparent 50%);
+          background-attachment: fixed;
+          transition: background-color 1s ease;
+        }
+
+        .dark .aurora-bg {
+          background-image: 
+            radial-gradient(at 0% 0%, var(--color-primary), transparent 40%),
+            radial-gradient(at 100% 100%, var(--color-accent), transparent 40%);
+          background-blend-mode: overlay;
+          opacity: 0.95;
+        }
+
+        /* EFEITO: GLASSMORPHISM REFINADO COM VARIÁVEIS */
+        .glass-premium {
+          background: rgba(255, 255, 255, 0.7);
+          backdrop-filter: blur(20px) saturate(180%);
+          border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .dark .glass-premium {
+          background: rgba(var(--bg-surface-rgb, 8, 8, 22), 0.7);
+          backdrop-filter: blur(25px) saturate(150%);
+          border: 1px solid var(--border-color);
+        }
+
+        /* LOGO STYLING - LIQUID PRISM EFFECT */
+        .logo-liquid-prism {
+          background: linear-gradient(
+            to right,
+            var(--color-primary),
+            #a855f7,
+            #60a5fa,
+            #a855f7,
+            var(--color-primary)
+          );
+          background-size: 200% auto;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: liquid-metal 5s linear infinite;
+        }
+
+        .dark .logo-liquid-prism {
+          background: linear-gradient(
+            to right,
+            #fff,
+            var(--color-accent),
+            var(--color-primary),
+            var(--color-accent),
+            #fff
+          );
+          background-size: 200% auto;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        /* LASER SCAN OVERLAY */
+        .laser-line {
+          position: absolute;
+          top: 0;
+          height: 100%;
+          width: 2px;
+          background: linear-gradient(to bottom, transparent, var(--color-primary), transparent);
+          box-shadow: 0 0 15px var(--color-primary);
+          z-index: 10;
+          pointer-events: none;
+        }
+
+        /* PAPEL ANTIGO / QUADRICULADO */
+        .bg-ancient-grid {
+          background-size: 32px 32px;
+          background-image:
+            linear-gradient(to right, rgba(139, 92, 5, 0.08) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(139, 92, 5, 0.08) 1px, transparent 1px);
+        }
+
+        body { 
+          font-family: 'Inter', sans-serif;
+          background-color: var(--bg-main);
+          transition: background-color 1s cubic-bezier(0.4, 0, 0.2, 1);
+          overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(79, 70, 229, 0.3); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(79, 70, 229, 0.5); }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "recharts": "https://esm.sh/recharts@^3.6.0"
+  }
+}
+</script>
+</head>
+<body class="aurora-bg text-slate-900 dark:text-slate-100 min-h-screen selection:bg-primary/30">
+    <div id="root"></div>
+</body>
+</html>
